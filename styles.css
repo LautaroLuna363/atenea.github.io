@@ -1,0 +1,266 @@
+:root {
+    --primary: #4a90e2;
+    --success: #1ed760;
+    --danger: #e71d36;
+    --dark: #121212;
+    --card: #282828;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    background-color: var(--dark);
+    color: #ffffff;    
+}
+
+header {
+    background-color: var(--success);
+    padding: 1rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+nav ul li a:hover {
+    color: var(--dark);
+}
+
+.logo{
+    font-size: 25px;
+    font-family: "MedievalSharp", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.contenedor-cronometro {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--success);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(30, 215, 96, 0.3);
+}
+
+.d-none {
+    display: none !important;
+}
+
+.control-de-cronometro {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: transform 0.1s ease, opacity 0.2s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.grupos {
+    margin-bottom: 1.5rem;
+}
+
+.grupos label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #121212;
+    font-weight: bold;
+}
+
+.grupos input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: #181818;
+    color: white;
+}
+
+input[readonly] {
+    background-color: #e9ecef !important;
+    color: #495057 !important;
+    cursor: not-allowed;
+}
+
+.error {
+    color: var(--danger);
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: var(--card);
+    color: white;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--dark);
+}
+
+th {
+    background-color: var(--danger);
+    color: white;
+}
+
+.contenedor-de-tiempo {
+    border: 2px solid rgba(0,0,0,0.2);
+}
+
+.btn-submit:hover {
+    background-color: #357abd !important;
+}
+
+/* MENÚ HAMBURGUESA RESPONSIVO */
+.menu-hamburguesa {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.menu-hamburguesa span {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+}
+
+@media (max-width: 600px) {
+    .control-de-cronometro {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .menu-hamburguesa {
+        display: flex;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: var(--card);
+        padding: 1rem 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        z-index: 1000;
+    }
+
+    nav ul.show {
+        display: flex;
+    }
+
+    .menu-hamburguesa.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .menu-hamburguesa.open span:nth-child(2) { opacity: 0; }
+    .menu-hamburguesa.open span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+}
+
+/* WIDGET FLOTANTE DE MÚSICA */
+.musica-flotante {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+    z-index: 2500;
+}
+
+.btn-floater {
+    width: 55px;
+    height: 55px;
+    background-color: var(--success);
+    color: white;
+    font-size: 1.4rem;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-musical {
+    background-color: #4a90e2;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: deslizarArriba 0.3s ease-out;
+}
+
+.menu-musical h4 {
+    margin: 0;
+    color: white;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding-bottom: 5px;
+}
+
+.menu-musical a {
+    color: #333;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background-color: #f8f9fa;
+    display: block;
+}
+
+@keyframes deslizarArriba {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

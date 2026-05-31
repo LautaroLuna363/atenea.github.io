@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATENEA - Control de Estudio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Macondo+Swash+Caps&family=MedievalSharp&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <header>
+        <nav>
+            <div class="logo">🏛️ ATENEA</div>
+            
+            <button class="menu-hamburguesa" id="btn-hm" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul id="nav-menu">
+                <li><a href="#" id="nav-registro">Nueva Sesión</a></li>
+                <li><a href="#" id="nav-historial">Historial</a></li>
+                <li><a href="#" id="nav-consejos">Inspiración</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenedor-cronometro">
+        
+        <section id="registro-tiempo" class="vista-de-activacion">
+            <h2>⏱️ Control de Sesión de Estudio</h2>
+            
+            <div class="contenedor-de-tiempo" style="background: #d1d4d0; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; text-align: center;">
+                <h3 style="color: #121212; margin-top: 0;">Tiempo Transcurrido</h3>
+                <div class="caja-de-tiempo" style="font-size: 3.5rem; font-weight: bold; color: #121212; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; margin: 1rem 0;">
+                    <span id="pantalla-cronometro">00:00:00</span>
+                </div>
+                <div class="control-de-cronometro">
+                    <button type="button" id="btn-start" style="background-color: #121212; color: #ffffff;">Iniciar</button>
+                    <button type="button" id="btn-pause" style="background-color: #121212; color: #ffffff;">Pausar</button>
+                    <button type="button" id="btn-stop" style="background-color: #121212; color: #ffffff;">Detener y Cargar</button>
+                </div>
+                <p id="mensaje-timer" class="info-msg" style="margin-top: 10px; font-style: italic; color: #3e3c3c;"></p>
+            </div>
+        
+            <form id="sesion-ed">
+                <div class="grupos">
+                    <label for="materia">Materia / Asignatura:</label>
+                    <input type="text" id="materia" placeholder="Ej: Matemáticas, Programación">
+                    <small class="error" id="error-materia" style="color: red; display: block; margin-top: 5px;"></small>
+                </div>
+                
+                <div class="grupos">
+                    <label for="tiempo-manual">Tiempo registrado por el cronómetro:</label>
+                    <input type="text" id="tiempo-manual" readonly placeholder="Usa el cronómetro de arriba para cargar el tiempo">
+                    <small class="error" id="error-tiempo" style="color: red; display: block; margin-top: 5px;"></small>
+                </div>
+
+                <div class="grupos">
+                    <label for="fecha">Fecha de Estudio:</label>
+                    <input type="date" id="fecha">
+                    <small class="error" id="error-fecha" style="color: red; display: block; margin-top: 5px;"></small>
+                </div>
+
+                <button type="submit" class="btn-submit" style="background-color: #4a90e2; color: white; width: 100%; padding: 12px; font-size: 1.1rem; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; margin-top: 10px;">
+                    Guardar Sesión en Historial
+                </button>
+            </form>
+        </section>
+
+        <section id="historia" class="d-none">
+            <h2>📊 Historial de Sesiones</h2>
+            <div class="contenedor-de-tabla">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Materia</th>
+                            <th>Duración (HH:MM:SS)</th>
+                            <th>Fecha</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-de-sesiones"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="sec-consejos" class="d-none" style="text-align: center; padding: 1rem;">
+            <h2>💡 Inspiración y Consejos</h2>
+            <div class="tarjeta-api" style="background: #282828; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); margin-top: 1.5rem;">
+                <p id="consejo-texto" style="font-size: 1.25rem; font-style: italic; min-height: 50px;">Cargando consejo para tu mente...</p>
+                <button type="button" id="btn-fetch" style="background-color: #1ed760; color: #121212; margin-top: 1.5rem;">Generar otro consejo</button>
+            </div>
+        </section>
+        
+    </main>
+
+    <div class="musica-flotante">
+        <div class="menu-musical d-none" id="opciones">
+            <h4>Recomendaciones</h4>
+            <a href="https://www.youtube.com/watch?v=-iVACinS6EY&list=RD-iVACinS6EY&start_radio=1" target="_blank">🎵 Animé Lo-Fi</a>
+            <a href="https://www.youtube.com/watch?v=uNIpbNgobVE&list=RDuNIpbNgobVE&start_radio=1" target="_blank">🤘 Rock No Vocals</a>
+            <a href="https://www.youtube.com/watch?v=xxYJONmXE8w&list=RDxxYJONmXE8w&start_radio=1" target="_blank">🪶 Medieval</a>
+        </div>
+        <button type="button" id="btn-music-floater" class="btn-floater">
+            🎵
+        </button>
+    </div>
+        
+    <script src="app.js"></script>
+</body>
+</html>
